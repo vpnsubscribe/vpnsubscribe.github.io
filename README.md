@@ -1,4 +1,4 @@
-# VPN订阅 | 3月10日18.2M/S|免费Clash/Shadowrocket/V2ray/SSR订阅节点分享  更新时间 2025-03-10 15:52:08
+# VPN订阅 | 3月11日20.9M/S|免费Shadowrocket/SSR/Clash/V2ray订阅节点分享  更新时间 2025-03-11 07:52:27
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://vpnsubscribe.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### Clash订阅链接
 
-- https://vpnsubscribe.github.io/uploads/2025/03/0-20250310.yaml
-- https://vpnsubscribe.github.io/uploads/2025/03/1-20250310.yaml
-- https://vpnsubscribe.github.io/uploads/2025/03/2-20250310.yaml
-- https://vpnsubscribe.github.io/uploads/2025/03/3-20250310.yaml
-- https://vpnsubscribe.github.io/uploads/2025/03/4-20250310.yaml
+- https://vpnsubscribe.github.io/uploads/2025/03/0-20250311.yaml
+- https://vpnsubscribe.github.io/uploads/2025/03/1-20250311.yaml
+- https://vpnsubscribe.github.io/uploads/2025/03/2-20250311.yaml
+- https://vpnsubscribe.github.io/uploads/2025/03/3-20250311.yaml
+- https://vpnsubscribe.github.io/uploads/2025/03/4-20250311.yaml
 
 ### V2ray订阅链接
 
-- https://vpnsubscribe.github.io/uploads/2025/03/0-20250310.txt
-- https://vpnsubscribe.github.io/uploads/2025/03/1-20250310.txt
-- https://vpnsubscribe.github.io/uploads/2025/03/2-20250310.txt
-- https://vpnsubscribe.github.io/uploads/2025/03/3-20250310.txt
-- https://vpnsubscribe.github.io/uploads/2025/03/4-20250310.txt
+- https://vpnsubscribe.github.io/uploads/2025/03/0-20250311.txt
+- https://vpnsubscribe.github.io/uploads/2025/03/1-20250311.txt
+- https://vpnsubscribe.github.io/uploads/2025/03/2-20250311.txt
+- https://vpnsubscribe.github.io/uploads/2025/03/3-20250311.txt
+- https://vpnsubscribe.github.io/uploads/2025/03/4-20250311.txt
 
 ### Sing-box订阅链接
 
-- https://vpnsubscribe.github.io/uploads/2025/03/20250310.json
+- https://vpnsubscribe.github.io/uploads/2025/03/20250311.json
 
 ## 更多clash节点订阅 ：
 
