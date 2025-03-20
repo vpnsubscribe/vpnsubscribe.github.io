@@ -1,0 +1,238 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://vpnsubscribe.github.io/news/article-76929.htm" />
+    <meta charset="utf-8">
+    <!--====== Title ======-->
+    <title>基于vue+springboot，实现图片base64转码保存到数据库</title>
+        <meta name="description" content="背景：在项目中遇到一个新增、编辑的场景。新增一个车辆信息，并且附有车辆照片和关联的设备照片，照片转码成base64保存到mysql数据库。前端使用的是elementUi的upload组件，在前端把图片" />
+        <link rel="icon" href="/assets/website/img/clashnyanpasu/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="VPN订阅 推荐VPN免费节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://vpnsubscribe.github.io/news/article-76929.htm" />
+    <meta property="og:site_name" content="VPN订阅 推荐VPN免费节点订阅官网" />
+    <meta property="og:title" content="基于vue+springboot，实现图片base64转码保存到数据库" />
+    <meta property="og:image" content="https://vpnsubscribe.github.io/uploads/20240623/70a6029b4b18b501f935493b3e7dc213.webp" />
+        <meta property="og:release_date" content="2025-03-19T09:09:44" />
+    <meta property="og:updated_time" content="2025-03-19T09:09:44" />
+        <meta property="og:description" content="背景：在项目中遇到一个新增、编辑的场景。新增一个车辆信息，并且附有车辆照片和关联的设备照片，照片转码成base64保存到mysql数据库。前端使用的是elementUi的upload组件，在前端把图片" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--====== Magnific Popup CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/magnific-popup.css">
+    <!--====== Slick CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/slick.css">
+    <!--====== Line Icons CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/LineIcons.css">
+    <!--====== Bootstrap CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/bootstrap.min.css">
+    <!--====== Default CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/default.css">
+    <!--====== Style CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/style.css">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="基于vue+springboot，实现图片base64转码保存到数据库">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3W92VD25Q0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3W92VD25Q0');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--====== PRELOADER PART START ======-->
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--====== PRELOADER PART ENDS ======-->
+    <!--====== NAVBAR TWO PART START ======-->
+    <section class="navbar-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg">
+                                                <a class="navbar-brand top" href="/">
+                            VPN订阅                        </a>
+                                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTwo" aria-controls="navbarTwo" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
+                            <ul class="navbar-nav m-auto">
+                                                                <li class="nav-item"><a href="/">首页</a></li>
+                                                                <li class="nav-item"><a href="/free-nodes/">免费节点</a></li>
+                                                                <li class="nav-item"><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li class="nav-item"><a href="/news/">新闻资讯</a></li>
+                                                                <li class="nav-item"><a href="/client.htm">客户端</a></li>
+                                                            </ul>
+                        </div>
+
+                    </nav> <!-- navbar -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+    <!--====== NAVBAR TWO PART ENDS ======-->
+    <!--====== SLIDER PART START ======-->
+    <section id="home" class="slider_area">
+        <div id="carouselThree" class="carousel slide sub-page" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="slider-content">
+                                    <h1 class="title">基于vue+springboot，实现图片base64转码保存到数据库</h1>
+                                    <p class="text">
+                                        <a href="/">首页</a> / 
+                                        <a href="/news/">新闻资讯</a> / 
+                                        <span>正文</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div> <!-- row -->
+                    </div> <!-- container -->
+                    <div class="slider-image-box d-none d-lg-flex align-items-end">
+                        <div class="slider-image">
+                            <img src="/assets/website/img/clashnyanpasu/slider/1.png" alt="Hero">
+                        </div> <!-- slider-imgae -->
+                    </div> <!-- slider-imgae box -->
+                </div> <!-- carousel-item -->
+            </div>
+        </div>
+    </section>
+    <!--====== SLIDER PART ENDS ======-->
+    <!--====== ABOUT PART START ======-->
+    <section id=about class=about-area>
+        <div class=container>
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> </h1> <p><strong>背景</strong>：在项目中遇到一个新增、编辑的场景。新增一个车辆信息，并且附有车辆照片和关联的设备照片，照片转码成base64保存到mysql数据库。前端使用的是elementUi的upload组件，<strong>在前端把图片转成base64再传到后端</strong>。</p> <p><strong>前端代码如下</strong>：</p> <pre><code class="prism language-java"><span class="token operator">&lt;</span>el<span class="token operator">-</span>upload               ref<span class="token operator">=</span><span class="token string">"carUpload"</span><span class="token operator">:</span>action<span class="token operator">=</span><span class="token string">"doUpload"</span><span class="token operator">:</span>file<span class="token operator">-</span>list<span class="token operator">=</span><span class="token string">"carPictureList"</span>               list<span class="token operator">-</span>type<span class="token operator">=</span><span class="token string">"picture-card"</span><span class="token operator">:</span>limit<span class="token operator">=</span>limitNum<span class="token operator">:</span>auto<span class="token operator">-</span>upload<span class="token operator">=</span><span class="token string">"true"</span><span class="token operator">:</span>on<span class="token operator">-</span>change<span class="token operator">=</span><span class="token string">"changeCarPicture"</span><span class="token operator">:</span>on<span class="token operator">-</span>exceed<span class="token operator">=</span><span class="token string">"handleExceed"</span><span class="token operator">:</span>before<span class="token operator">-</span>upload<span class="token operator">=</span><span class="token string">"beforeUpload"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>i<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"el-icon-plus"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>el<span class="token operator">-</span>upload<span class="token operator">&gt;</span></code></pre> <ul> <li>ref ：给这个组件加个id，可通过 this.$refs.carUpload 访问这个组件对象</li> <li>action ：必选参数，上传的地址，通过这个地址上传的文件类型为MultipartFile，而我需要的是base64的一串字符串。所以我这里的处理方式是随意给个接口地址，下面会给出接口代码</li> <li>file-list ：上传的文件列表，一个对象数组，类似[{name:‘xxx’,url:‘xxxx’}]</li> <li>list-type ：文件列表的类型，有text/picture/picture-card，可根据需求选择对应的类型</li> <li>limit ：最大允许上传个数</li> <li>auto-upload ：是否在选取文件后立即进行上传，这个是会上传到你action的指定接口的</li> <li>on-change ：文件状态改变时的钩子，添加文件、上传成功和上传失败时都会被调用，<strong>在这里可以把图片转成base64</strong></li> <li>on-exceed ：文件超出个数限制时的钩子</li> <li>before-upload ：上传文件之前的钩子，参数为上传的文件，我是在这加了文件类型的限制</li> </ul> <p>直接上代码：</p> <pre><code class="prism language-java"><span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token punctuation">{<!-- --></span> 			doUpload<span class="token operator">:</span><span class="token keyword">this</span><span class="token punctuation">.</span>$http<span class="token punctuation">.</span><span class="token function">adornUrl</span><span class="token punctuation">(</span><span class="token string">'/sys/dept/upload'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 			carPictureList<span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> 			limitNum<span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span> 			carPicture<span class="token operator">:</span><span class="token string">''</span><span class="token comment">//定义一个值来接收base64的字符串</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span> 	methods<span class="token operator">:</span><span class="token punctuation">{<!-- --></span><span class="token function">changeCarPicture</span><span class="token punctuation">(</span>file<span class="token punctuation">,</span> fileList<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token comment">// 图片转成base64上传</span>         	let reader<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">FileReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         	reader<span class="token punctuation">.</span>onload<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token punctuation">{<!-- --></span>           	 	let _base64<span class="token operator">=</span> reader<span class="token punctuation">.</span>result<span class="token punctuation">;</span>           		let BASE64<span class="token operator">=</span> _base64<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">this</span><span class="token punctuation">.</span>carPicture<span class="token operator">=</span> BASE64<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//赋值</span><span class="token punctuation">}</span><span class="token punctuation">;</span>           reader<span class="token punctuation">.</span><span class="token function">readAsDataURL</span><span class="token punctuation">(</span>file<span class="token punctuation">.</span>raw<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token function">handleExceed</span><span class="token punctuation">(</span>files<span class="token punctuation">,</span> fileList<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token comment">//这个是文件超出个数限制时，给出提示</span><span class="token keyword">this</span><span class="token punctuation">.</span>$notify<span class="token punctuation">.</span><span class="token function">warning</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>           	  title<span class="token operator">:</span><span class="token string">'警告'</span><span class="token punctuation">,</span>           	  message<span class="token operator">:</span><span class="token string">'图片只能上传一张'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token function">beforeUpload</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token comment">//添加文件类型的限制</span>        	 	let types<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'image/jpeg'</span><span class="token punctuation">,</span><span class="token string">'image/jpg'</span><span class="token punctuation">,</span><span class="token string">'image/png'</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">const</span> isImage<span class="token operator">=</span> types<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>file<span class="token punctuation">.</span>type<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>isImage<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span>$message<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'上传图片只能是 JPG、JPEG、PNG 格式!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span><span class="token boolean">false</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">}</span></code></pre> <p>给大家看一下action绑定的doUpload: this.$http.adornUrl(’/sys/dept/upload’),这个接口</p> <pre><code class="prism language-java"><span class="token comment">/**      * 上传文件      */</span><span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"/upload"</span><span class="token punctuation">)</span><span class="token keyword">public</span> R<span class="token function">upload</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span><span class="token string">"file"</span><span class="token punctuation">)</span> MultipartFile file<span class="token punctuation">)</span><span class="token keyword">throws</span> Exception<span class="token punctuation">{<!-- --></span><span class="token comment">//上传文件</span>         String suffix<span class="token operator">=</span> file<span class="token punctuation">.</span><span class="token function">getOriginalFilename</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>file<span class="token punctuation">.</span><span class="token function">getOriginalFilename</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data<span class="token operator">=</span> file<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span> R<span class="token punctuation">.</span><span class="token function">ok</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"data"</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <p>保证这个接口能用就行。</p> <p>剩下的就很简单了，图片已经转成base64字符串保存在carPicture了，把这个字符串传到后台进行保存就行了。要传其他照片也是一样，多写一个upload，转成base64，换一个值保存，对于后端接口来说，它就是一个String类型的数据。<br /> 顺带提一下，<strong>mysql保存base64是用longblob字段类型</strong>，在你保存这种数据时，可能会因为数据量过大而报错，可以上网查看相应的解决办法，增加max_allowed_packet。</p> <p><strong>接下来来说一下图片回显</strong><br /> 很简单！<br /> 首先，根据你的接口查询到相应得数据，然后</p> <pre><code class="prism language-java">		let carMap<span class="token operator">=</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">;</span>         carMap<span class="token punctuation">[</span><span class="token string">"name"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'车辆照片'</span><span class="token punctuation">;</span>         carMap<span class="token punctuation">[</span><span class="token string">"url"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"data:image/png;base64,"</span><span class="token operator">+</span> carPicture<span class="token punctuation">;</span><span class="token keyword">this</span><span class="token punctuation">.</span>carPictureList<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>carMap<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre> <p>carPicture 为你后端查询的图片base64字符串<br /> carPictureList是你绑定在upload上的那个文件列表<br /> 这样你的图片就能回显在页面上了。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-76251.htm">长沙免费领养宠物的平台有哪些（长沙哪里可以免费领养宠物）</a></p>
+                                        <p>下一个：<a href="/news/article-76930.htm">SSL及GMVPN握手协议详解</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-72911.htm" title="通州卖宠物的地方（通州宠物用品批发）">通州卖宠物的地方（通州宠物用品批发）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-14-free-high-speed-nodes.htm" title="VPN订阅 | 3月14日18.7M/S|免费SSR/V2ray/Clash/Shadowrocket订阅节点分享">VPN订阅 | 3月14日18.7M/S|免费SSR/V2ray/Clash/Shadowrocket订阅节点分享</a></li>
+                        <li class="py-2"><a href="/news/article-73570.htm" title="兰州哪里卖狗的多（兰州市最大的狗市场）">兰州哪里卖狗的多（兰州市最大的狗市场）</a></li>
+                        <li class="py-2"><a href="/news/article-71589.htm" title="mysql中的date、datetime、timestamp你还不知道怎么使用吗_在线工具">mysql中的date、datetime、timestamp你还不知道怎么使用吗_在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-76929.htm" title="基于vue+springboot，实现图片base64转码保存到数据库">基于vue+springboot，实现图片base64转码保存到数据库</a></li>
+                        <li class="py-2"><a href="/news/article-74917.htm" title="扬州宠物医院营业时间电话（扬州宠物医院营业时间电话查询）">扬州宠物医院营业时间电话（扬州宠物医院营业时间电话查询）</a></li>
+                        <li class="py-2"><a href="/news/article-71590.htm" title="领养宠物平台（免费领养宠物猫的平台）">领养宠物平台（免费领养宠物猫的平台）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-10-free-v2ray-subscribe.htm" title="VPN订阅 | 3月10日18.6M/S|免费SSR/Shadowrocket/Clash/V2ray订阅节点">VPN订阅 | 3月10日18.6M/S|免费SSR/Shadowrocket/Clash/V2ray订阅节点</a></li>
+                        <li class="py-2"><a href="/news/article-76930.htm" title="SSL及GMVPN握手协议详解">SSL及GMVPN握手协议详解</a></li>
+                        <li class="py-2"><a href="/news/article-76251.htm" title="长沙免费领养宠物的平台有哪些（长沙哪里可以免费领养宠物）">长沙免费领养宠物的平台有哪些（长沙哪里可以免费领养宠物）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">33</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!--====== FOOTER PART START ======-->
+    <section class="footer-area footer-dark">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="copyright text-center mt-35">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <p class="text">
+                            VPN订阅 推荐VPN免费节点订阅官网 版权所有 Powered by WordPress
+                        </p>
+                    </div> <!--  copyright -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+    <!--====== FOOTER PART ENDS ======-->
+    <!--====== BACK TOP TOP PART START ======-->
+    <a href="#" class="back-to-top"><i class="lni lni-chevron-up"></i></a>
+    <!--====== BACK TOP TOP PART ENDS ======-->
+    <!--====== Jquery js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/vendor/modernizr-3.7.1.min.js"></script>
+    <!--====== Bootstrap js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/ajax-contact.js"></script>
+    <!--====== Isotope js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/isotope.pkgd.min.js"></script>
+    <!--====== Scrolling Nav js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/scrolling-nav.js"></script>
+    <!--====== Main js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
