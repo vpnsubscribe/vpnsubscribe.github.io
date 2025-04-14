@@ -1,0 +1,243 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://vpnsubscribe.github.io/news/article-94876.htm" />
+    <meta charset="utf-8">
+    <!--====== Title ======-->
+    <title>异步请求与中断 ( XHR,Axios,Fetch对比 )</title>
+        <meta name="description" content="&nbsp;随着AJAX技术的诞生,前端正式进入了局部刷新和前后端分离的新时代,最初的服务请求技术是XHR,随着技术发展和ES6的诞生,jquery ajax,axios,fetch 等技术的产生让前" />
+        <link rel="icon" href="/assets/website/img/clashnyanpasu/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="VPN订阅 推荐VPN免费节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://vpnsubscribe.github.io/news/article-94876.htm" />
+    <meta property="og:site_name" content="VPN订阅 推荐VPN免费节点订阅官网" />
+    <meta property="og:title" content="异步请求与中断 ( XHR,Axios,Fetch对比 )" />
+    <meta property="og:image" content="https://vpnsubscribe.github.io/uploads/20240623/99c5ae045749f50a87b89296f4f4b921.webp" />
+        <meta property="og:release_date" content="2025-04-13T07:18:41" />
+    <meta property="og:updated_time" content="2025-04-13T07:18:41" />
+        <meta property="og:description" content="&nbsp;随着AJAX技术的诞生,前端正式进入了局部刷新和前后端分离的新时代,最初的服务请求技术是XHR,随着技术发展和ES6的诞生,jquery ajax,axios,fetch 等技术的产生让前" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--====== Magnific Popup CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/magnific-popup.css">
+    <!--====== Slick CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/slick.css">
+    <!--====== Line Icons CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/LineIcons.css">
+    <!--====== Bootstrap CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/bootstrap.min.css">
+    <!--====== Default CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/default.css">
+    <!--====== Style CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/style.css">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="异步请求与中断 ( XHR,Axios,Fetch对比 )">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3W92VD25Q0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3W92VD25Q0');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--====== PRELOADER PART START ======-->
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--====== PRELOADER PART ENDS ======-->
+    <!--====== NAVBAR TWO PART START ======-->
+    <section class="navbar-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg">
+                                                <a class="navbar-brand top" href="/">
+                            VPN订阅                        </a>
+                                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTwo" aria-controls="navbarTwo" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
+                            <ul class="navbar-nav m-auto">
+                                                                <li class="nav-item"><a href="/">首页</a></li>
+                                                                <li class="nav-item"><a href="/free-nodes/">免费节点</a></li>
+                                                                <li class="nav-item"><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li class="nav-item"><a href="/news/">新闻资讯</a></li>
+                                                                <li class="nav-item"><a href="/client.htm">客户端</a></li>
+                                                            </ul>
+                        </div>
+
+                    </nav> <!-- navbar -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+    <!--====== NAVBAR TWO PART ENDS ======-->
+    <!--====== SLIDER PART START ======-->
+    <section id="home" class="slider_area">
+        <div id="carouselThree" class="carousel slide sub-page" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="slider-content">
+                                    <h1 class="title">异步请求与中断 ( XHR,Axios,Fetch对比 )</h1>
+                                    <p class="text">
+                                        <a href="/">首页</a> / 
+                                        <a href="/news/">新闻资讯</a> / 
+                                        <span>正文</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div> <!-- row -->
+                    </div> <!-- container -->
+                    <div class="slider-image-box d-none d-lg-flex align-items-end">
+                        <div class="slider-image">
+                            <img src="/assets/website/img/clashnyanpasu/slider/1.png" alt="Hero">
+                        </div> <!-- slider-imgae -->
+                    </div> <!-- slider-imgae box -->
+                </div> <!-- carousel-item -->
+            </div>
+        </div>
+    </section>
+    <!--====== SLIDER PART ENDS ======-->
+    <!--====== ABOUT PART START ======-->
+    <section id=about class=about-area>
+        <div class=container>
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<p>&nbsp;随着AJAX技术的诞生,前端正式进入了局部刷新和前后端分离的新时代,最初的服务请求技术是XHR,随着技术发展和ES6的诞生,jquery ajax,axios,fetch 等技术的产生让前端的异步请求更便捷.</p> <p><span style="background-color: rgba(255, 255, 255, 1); color: rgba(255, 0, 0, 1)">当我们使用异步请求的时候可能会有中断请求的需要</span><span style="background-color: rgba(255, 255, 255, 1); color: rgba(255, 0, 0, 1)">.</span></p> <p></p> <p>比如当我们第一次查询数据的时候没有输入查询条件导致查询很慢,于是我们第二次添加了查询调价重新查询很快结果返回并渲染到了页面,</p> <p>这时第一次的请求还在进行中,无法停止</p> <p></p> <p>当我们正在看数据的时候第一次的请求返回了结果并重新渲染了页面,导致数据混乱</p> <p>各种请求技术怎么又该怎么实现呢?下边来分别进行简述:</p> <p>&nbsp;一、XHR</p> <p>1.说明</p> <p>AJAX 使用的<code>XMLHttpRequest</code>&nbsp;的对象与服务器通信.让我们通过下面显示的图像了解 AJAX 的流程或 AJAX 的工作原理。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/63ab4dceea7bf60e6f5712d9a5a9a856.jpg" alt="异步请求与中断 ( XHR,Axios,Fetch对比 )"></p> <p>2.调用和中断</p> <div class="cnblogs_code"> <pre>const xhr =<span style="color: rgba(0, 0, 255, 1)">new</span><span style="color: rgba(0, 0, 0, 1)"> XMLHttpRequest(); const method</span>= 'GET'<span style="color: rgba(0, 0, 0, 1)">; const url</span>= 'https://xxx'<span style="color: rgba(0, 0, 0, 1)">; xhr.open(method, url,</span><span style="color: rgba(0, 0, 255, 1)">true</span><span style="color: rgba(0, 0, 0, 1)">); xhr.onreadystatechange</span>= () =&gt;<span style="color: rgba(0, 0, 0, 1)"> {</span><span style="color: rgba(0, 0, 255, 1)">if</span> (xhr.readyState === 4<span style="color: rgba(0, 0, 0, 1)">) {</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> do something</span><span style="color: rgba(0, 0, 0, 1)">  } } xhr.send();  setTimeout(()</span>=&gt;<span style="color: rgba(0, 0, 0, 1)">{     xhr.abort()} ,</span>1000)</pre> </div> <p>jquery Ajax由于也是相同的</p> <div class="cnblogs_code"> <pre><span>var&nbsp;ajaxGet =<span>&nbsp;$.get(“https://xxx”,</span><br/>　　{id:</span>1<span>},<br/></span><span style="color: rgba(0, 0, 255, 1)">function</span><span>(data){undefined ….</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">一些操作</span><span> }<br/>);<br/> ajaxGet.abort();</span></pre> </div> <p>二、axios</p> <p>1.说明</p> <p>众所周知xhr技术虽然实现了异步调用但是如果连续有序地调用多个请求就会出现回调地狱的尴尬场面.</p> <p>ES6推出的async/await promise可以很好的解决这个问题.而axios就是基于promise对xhr进行的封装</p> <p>核心代码如下(简单模拟非源码):</p> <div class="cnblogs_code"><img decoding="async" src="https://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt="异步请求与中断 ( XHR,Axios,Fetch对比 )" id="code_img_closed_294f821b-9ea0-4129-8a52-3a5d290429e1" class="code_img_closed"/><img decoding="async" src="https://images.cnblogs.com/OutliningIndicators/ExpandedBlockStart.gif" alt="异步请求与中断 ( XHR,Axios,Fetch对比 )" id="code_img_opened_294f821b-9ea0-4129-8a52-3a5d290429e1" class="code_img_opened" style="display: none"/></p> <div id="cnblogs_code_open_294f821b-9ea0-4129-8a52-3a5d290429e1" class="cnblogs_code_hide"> <pre><span style="color: rgba(0, 128, 128, 1)"> 1</span><span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> axios(config){</span><span style="color: rgba(0, 128, 128, 1)"> 2</span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(0, 0, 255, 1)">new</span> Promise((resolve) =&gt;<span style="color: rgba(0, 0, 0, 1)"> {</span><span style="color: rgba(0, 128, 128, 1)"> 3</span>             const {url='',data={},method='get'} = config;<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">解构传参</span><span style="color: rgba(0, 128, 128, 1)"> 4</span>             const xhr =<span style="color: rgba(0, 0, 255, 1)">new</span> XMLHttpRequest;<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">创建请求对象</span><span style="color: rgba(0, 128, 128, 1)"> 5</span>             xhr.open(method,url,<span style="color: rgba(0, 0, 255, 1)">true</span><span style="color: rgba(0, 0, 0, 1)">);</span><span style="color: rgba(0, 128, 128, 1)"> 6</span>             xhr.onreadystatechange = () =&gt;<span style="color: rgba(0, 0, 0, 1)"> {</span><span style="color: rgba(0, 128, 128, 1)"> 7</span><span style="color: rgba(0, 0, 255, 1)">if</span>(xhr.readyState == 4 &amp;&amp; xhr.status == 200<span style="color: rgba(0, 0, 0, 1)">){</span><span style="color: rgba(0, 128, 128, 1)"> 8</span><span style="color: rgba(0, 0, 0, 1)">                    resolve(xhr.responseText);</span><span style="color: rgba(0, 128, 128, 1)"> 9</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">异步请求返回后将Promise转为成功态并将结果导出</span><span style="color: rgba(0, 128, 128, 1)">10</span><span style="color: rgba(0, 0, 0, 1)">                }</span><span style="color: rgba(0, 128, 128, 1)">11</span><span style="color: rgba(0, 0, 0, 1)">            }</span><span style="color: rgba(0, 128, 128, 1)">12</span>             xhr.onerror = (err) =&gt;<span style="color: rgba(0, 0, 0, 1)"> {</span><span style="color: rgba(0, 128, 128, 1)">13</span><span style="color: rgba(0, 0, 0, 1)">                reject(err);</span><span style="color: rgba(0, 128, 128, 1)">14</span><span style="color: rgba(0, 0, 0, 1)">            };</span><span style="color: rgba(0, 128, 128, 1)">15</span><span style="color: rgba(0, 0, 0, 1)">            xhr.send(JSON.stringfy(data));</span><span style="color: rgba(0, 128, 128, 1)">16</span><span style="color: rgba(0, 0, 0, 1)">        })</span><span style="color: rgba(0, 128, 128, 1)">17</span>     }</pre> </div> <p><span class="cnblogs_code_collapse">View Code</span></div> <p>2.使用</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> then catch 链式调用</span>    axios.get('/user'<span style="color: rgba(0, 0, 0, 1)">)    .then(</span><span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> (response) {      console.log(response);      axios.get(</span>'class?info=' +<span style="color: rgba(0, 0, 0, 1)"> response.data.name);     })    .</span><span style="color: rgba(0, 0, 255, 1)">catch</span>(<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> (error) {       console.log(error);     });</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> async await</span><span style="color: rgba(0, 0, 255, 1)">var</span> info = await axios.get('user'<span style="color: rgba(0, 0, 0, 1)">);</span><span style="color: rgba(0, 0, 255, 1)">var</span> ret =  await axios.get('class?info=' + info.data.name);</pre> </div> <p>&nbsp;3.中断(取消)</p> <p>axios 的中断取消是基于<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/tc39/proposal-cancelable-promises"  target="_blank" rel="nofollow">cancelable promises proposal</a></p> <p>原理是内部生成一个Promise 将 resove 方法抛给外部的 source的cancel方法,</p> <p>当外部调用这个方法时,内部的promise.then就会调用xhr.abort() 并调用外部的reject</p> <p>可以使用<code>CancelToken.source</code>&nbsp;工厂方法创建 cancel token，像这样：</p> <div class="cnblogs_code"> <pre>const CancelToken =<span style="color: rgba(0, 0, 0, 1)"> axios.CancelToken; const source</span>=<span style="color: rgba(0, 0, 0, 1)"> CancelToken.source();  axios.get(</span>'/user/12345'<span style="color: rgba(0, 0, 0, 1)">, {   cancelToken: source.token }).</span><span style="color: rgba(0, 0, 255, 1)">catch</span>(<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)">(thrown) {</span><span style="color: rgba(0, 0, 255, 1)">if</span><span style="color: rgba(0, 0, 0, 1)"> (axios.isCancel(thrown)) {<br/><span style="color: rgba(51, 153, 102, 1)">//</span><span style="color: rgba(51, 153, 102, 1)">取消处理</span>     console.log(</span>'Request canceled'<span style="color: rgba(0, 0, 0, 1)">, thrown.message);   }</span><span style="color: rgba(0, 0, 255, 1)">else</span><span style="color: rgba(0, 0, 0, 1)"> {</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 处理错误</span><span style="color: rgba(0, 0, 0, 1)">  } });  axios.post(</span>'/user/12345'<span style="color: rgba(0, 0, 0, 1)">, {   name:</span>'new name'<span style="color: rgba(0, 0, 0, 1)"> }, {   cancelToken: source.token })</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 取消请求（message 参数是可选的）</span> source.cancel('Operation canceled by the user.');</pre> </div> <p>还可以通过传递一个 executor 函数到<code>CancelToken</code>&nbsp;的构造函数来创建 cancel token：</p> <div class="cnblogs_code"> <pre>const CancelToken =<span style="color: rgba(0, 0, 0, 1)"> axios.CancelToken; let cancel;  axios.get(</span>'/user/12345'<span style="color: rgba(0, 0, 0, 1)">, {   cancelToken:</span><span style="color: rgba(0, 0, 255, 1)">new</span> CancelToken(<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> executor(c) {</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> executor 函数接收一个 cancel 函数作为参数</span>     cancel =<span style="color: rgba(0, 0, 0, 1)"> c;   }) });</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> cancel the request</span> cancel();</pre> </div> <p>三、Fetch</p> <p>&nbsp;1.说明</p> <p>Fetch也是基于ES6 Promise 实现的一个服务器请求技术,但不是对xhr的封装.</p> <p>也是底层的实现不需要引入包,是 XMLHttpRequest 的升级版.兼容除了IE的大部分浏览器</p> <p>2.基本使用</p> <div class="cnblogs_code"> <pre> // then  catch 链式调用<br/>fetch<span class="token punctuation">(<span class="token string">'<a class="token url-link" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://api.github.com/users/ruanyf"  rel="nofollow">https://x</a>xxx'<span class="token punctuation">)<br/></span></span></span><code class="language-javascript"><span class="token function"><span class="token punctuation"><span class="token string"><span class="token punctuation"><span class="token punctuation">.<span class="token function">then<span class="token punctuation">(response<span class="token operator">=<span class="token operator">&gt; response<span class="token punctuation">.<span class="token function">json<span class="token punctuation">(<span class="token punctuation">)<span class="token punctuation">)<br/></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code><code class="language-javascript"><span class="token function"><span class="token punctuation"><span class="token string"><span class="token punctuation"><span class="token punctuation"><span class="token function"><span class="token punctuation"><span class="token operator"><span class="token operator"><span class="token punctuation"><span class="token function"><span class="token punctuation"><span class="token punctuation"><span class="token punctuation"><span class="token punctuation">  .<span class="token function">then<span class="token punctuation">(json<span class="token operator">=<span class="token operator">&gt; console<span class="token punctuation">.<span class="token function">log<span class="token punctuation">(json<span class="token punctuation">)<span class="token punctuation">)<br/></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code><code class="language-javascript"><span class="token function"><span class="token punctuation"><span class="token string"><span class="token punctuation"><span class="token punctuation"><span class="token function"><span class="token punctuation"><span class="token operator"><span class="token operator"><span class="token punctuation"><span class="token function"><span class="token punctuation"><span class="token punctuation"><span class="token punctuation"><span class="token punctuation"><span class="token function"><span class="token punctuation"><span class="token operator"><span class="token operator"><span class="token punctuation"><span class="token function"><span class="token punctuation"><span class="token punctuation"><span class="token punctuation"><span class="token punctuation">  .<span class="token keyword">catch<span class="token punctuation">(err<span class="token operator">=<span class="token operator">&gt; console<span class="token punctuation">.<span class="token function">log<span class="token punctuation">(<span class="token string">'Request Failed'<span class="token punctuation">, err<span class="token punctuation">)<span class="token punctuation">)<span class="token punctuation">;<br/><br/> // async await<br/></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code>async<span style="color: rgba(0, 0, 255, 1)">function</span><span> getJSON() {<br/></span><span>let url</span>= 'https:XXXX'<span>;<br/></span><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><span style="color: rgba(0, 0, 255, 1)">try</span><span> {<br/></span></em></em></em></em></em><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><span>    let response</span>=<span> await fetch(url);<br/></span></em></em></em></em></em></em><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><span style="color: rgba(0, 0, 255, 1)">return</span><span> await response.json();<br/></span></em></em></em></em></em></em></em><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><span>  }</span><span style="color: rgba(0, 0, 255, 1)">catch</span><span> (error) {<br/></span></em></em></em></em></em></em></em></em><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><span>    console.log(</span>'Request Failed'<span>, error);<br/></span></em></em></em></em></em></em></em></em></em><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><span>  }<br/></span></em></em></em></em></em></em></em></em></em></em><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><span>}</span></em></em></em></em></em></em></em></em></em></em></em></pre> </div> <p>3.中断</p> <p>Fetch的中断是基于webApi的&nbsp;AbortController(实验阶段的功能兼容除了IE的大部分浏览器)</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 255, 1)">var</span> controller =<span style="color: rgba(0, 0, 255, 1)">new</span><span style="color: rgba(0, 0, 0, 1)"> AbortController();</span><span style="color: rgba(0, 0, 255, 1)">var</span> signal =<span style="color: rgba(0, 0, 0, 1)"> controller.signal;</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 可以监听取消事件</span> signal.addEventListener('abort'<span style="color: rgba(0, 0, 0, 1)">,   ()</span>=&gt; console.log('abort!'<span style="color: rgba(0, 0, 0, 1)">) );  setTimeout(()</span>=&gt;<span style="color: rgba(0, 0, 0, 1)">{</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">定时或者手动调用abort方法中断</span><span style="color: rgba(0, 0, 0, 1)">     controller.abort();   },</span>1000<span style="color: rgba(0, 0, 0, 1)">)   fetch(</span>'http://xxxx', {signal}).then(<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)">(response) {     ...   }).</span><span style="color: rgba(0, 0, 255, 1)">catch</span>(<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)">(e) {</span><span style="color: rgba(0, 0, 255, 1)">if</span><span style="color: rgba(0, 0, 0, 1)">(signal.aborted){</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 可以通过 signal.aborted 属性判断</span><span style="color: rgba(0, 0, 0, 1)">      ...     }</span><span style="color: rgba(0, 0, 255, 1)">if</span>(e.name=='AbortError'<span style="color: rgba(0, 0, 0, 1)">){</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 也可以通过 error.name 判断</span><span style="color: rgba(0, 0, 0, 1)">     ...     }   })</span>/</pre> </div> <p>四 、其他实现方法</p> <p>&nbsp;其实在知道这些中断方法之前本人还用过其他的方法——uuid</p> <p>&nbsp;主要思路就是每次调用请求的时候生成一个uuid,将这个uuid赋值给全局的变量同时作为参数传给请求的方法.</p> <p>&nbsp;在请求返回处理数据的时候验证当前的全局uuid 是否和当前调用参数是否一致,不一致就不渲染数据,</p> <p>&nbsp;这样就能保证渲染的数据是最后一次调用请求的数据</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">以Fetch为例</span><span style="color: rgba(0, 0, 255, 1)">this</span>.uuid = ""<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 自己写一个生成uuid的方法,或者使用第三方的包</span><span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> genUUID(){</span><span style="color: rgba(0, 0, 255, 1)">return</span> 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)">(c) {</span><span style="color: rgba(0, 0, 255, 1)">var</span> r = (Math.random() * 16) | 0<span style="color: rgba(0, 0, 255, 1)">var</span> v = c === 'x' ? r : (r &amp; 0x3) | 0x8<span style="color: rgba(0, 0, 255, 1)">return</span> v.toString(16<span style="color: rgba(0, 0, 0, 1)">)     }) }</span><span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> fetchData(){</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 赋值给局部变量和全局变量</span>   let  uuid =<span style="color: rgba(0, 0, 0, 1)"> genUUID()</span><span style="color: rgba(0, 0, 255, 1)">this</span>.uuid =<span style="color: rgba(0, 0, 0, 1)"> uuid   fetch(url).then(res</span>=&gt;<span style="color: rgba(0, 0, 0, 1)">{</span><span style="color: rgba(0, 0, 255, 1)">if</span>(<span style="color: rgba(0, 0, 255, 1)">this</span>.uuid ===<span style="color: rgba(0, 0, 0, 1)"> uuid){</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 渲染数据</span><span style="color: rgba(0, 0, 0, 1)">     }    })  }</span></pre> </div> <p>参考链接:<br />https://www.w3cschool.cn/ajax/ajax-tutorial.html<br />https://www.cnblogs.com/ysk123/p/11544211.html</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-94296.htm">宠物商品品牌 宠物商品品牌排行榜</a></p>
+                                        <p>下一个：<a href="/news/article-94880.htm">哪些属相的人不宜养狗（什么属像不能养狗）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-28-free-v2ray.htm" title="VPN订阅 | 3月28日19.6M/S|免费Shadowrocket/SSR/V2ray/Clash订阅节点分享">VPN订阅 | 3月28日19.6M/S|免费Shadowrocket/SSR/V2ray/Clash订阅节点分享</a></li>
+                        <li class="py-2"><a href="/news/article-84596.htm" title="动物疫苗多少钱打一次到哪打呢图片（动物疫苗多少钱打一次到哪打呢图片视频）">动物疫苗多少钱打一次到哪打呢图片（动物疫苗多少钱打一次到哪打呢图片视频）</a></li>
+                        <li class="py-2"><a href="/news/article-94880.htm" title="哪些属相的人不宜养狗（什么属像不能养狗）">哪些属相的人不宜养狗（什么属像不能养狗）</a></li>
+                        <li class="py-2"><a href="/news/article-94296.htm" title="宠物商品品牌 宠物商品品牌排行榜">宠物商品品牌 宠物商品品牌排行榜</a></li>
+                        <li class="py-2"><a href="/news/article-88895.htm" title="宠物领养要花钱吗现在怎么办（宠物领养要花钱吗现在怎么办理）">宠物领养要花钱吗现在怎么办（宠物领养要花钱吗现在怎么办理）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-10-free-node-subscribe.htm" title="VPN订阅 | 4月10日21.6M/S|免费SSR/V2ray/Clash/Shadowrocket订阅节点分享">VPN订阅 | 4月10日21.6M/S|免费SSR/V2ray/Clash/Shadowrocket订阅节点分享</a></li>
+                        <li class="py-2"><a href="/news/article-86018.htm" title="FreeRTOS实时操作系统之可视化追踪调试_操作系统">FreeRTOS实时操作系统之可视化追踪调试_操作系统</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-13-free-subscribe-node.htm" title="VPN订阅 | 4月13日18M/S|免费Clash/SSR/Shadowrocket/V2ray订阅节点分享">VPN订阅 | 4月13日18M/S|免费Clash/SSR/Shadowrocket/V2ray订阅节点分享</a></li>
+                        <li class="py-2"><a href="/news/article-82433.htm" title="对称加解密算法的填充模式">对称加解密算法的填充模式</a></li>
+                        <li class="py-2"><a href="/news/article-72248.htm" title="动物医院诊疗活动范围包括哪些 动物医院诊疗活动范围包括哪些内容">动物医院诊疗活动范围包括哪些 动物医院诊疗活动范围包括哪些内容</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">42</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!--====== FOOTER PART START ======-->
+    <section class="footer-area footer-dark">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="copyright text-center mt-35">
+                                            <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p class="text">
+                            VPN订阅 推荐VPN免费节点订阅官网 版权所有 Powered by WordPress
+                        </p>
+                    </div> <!--  copyright -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+    <!--====== FOOTER PART ENDS ======-->
+    <!--====== BACK TOP TOP PART START ======-->
+    <a href="#" class="back-to-top"><i class="lni lni-chevron-up"></i></a>
+    <!--====== BACK TOP TOP PART ENDS ======-->
+    <!--====== Jquery js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/vendor/modernizr-3.7.1.min.js"></script>
+    <!--====== Bootstrap js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/ajax-contact.js"></script>
+    <!--====== Isotope js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/isotope.pkgd.min.js"></script>
+    <!--====== Scrolling Nav js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/scrolling-nav.js"></script>
+    <!--====== Main js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
