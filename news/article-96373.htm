@@ -1,0 +1,243 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://vpnsubscribe.github.io/news/article-96373.htm" />
+    <meta charset="utf-8">
+    <!--====== Title ======-->
+    <title>java8中的Instant有关</title>
+        <meta name="description" content="Instant 表示时间，可以精确到纳秒。 这里直接打印的时间可以看出来，应该是有时区的差距的，差不多是差了8个小时。 在 Instant.now()的基础上加上8个小时，打印出来的时间戳就是一致的了" />
+        <link rel="icon" href="/assets/website/img/clashnyanpasu/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="VPN订阅 推荐VPN免费节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://vpnsubscribe.github.io/news/article-96373.htm" />
+    <meta property="og:site_name" content="VPN订阅 推荐VPN免费节点订阅官网" />
+    <meta property="og:title" content="java8中的Instant有关" />
+    <meta property="og:image" content="https://vpnsubscribe.github.io/uploads/20240623/bb09feeeb9330c67eb206c4c78186c85.webp" />
+        <meta property="og:release_date" content="2025-04-15T06:00:50" />
+    <meta property="og:updated_time" content="2025-04-15T06:00:50" />
+        <meta property="og:description" content="Instant 表示时间，可以精确到纳秒。 这里直接打印的时间可以看出来，应该是有时区的差距的，差不多是差了8个小时。 在 Instant.now()的基础上加上8个小时，打印出来的时间戳就是一致的了" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--====== Magnific Popup CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/magnific-popup.css">
+    <!--====== Slick CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/slick.css">
+    <!--====== Line Icons CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/LineIcons.css">
+    <!--====== Bootstrap CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/bootstrap.min.css">
+    <!--====== Default CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/default.css">
+    <!--====== Style CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/style.css">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="java8中的Instant有关">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3W92VD25Q0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3W92VD25Q0');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--====== PRELOADER PART START ======-->
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--====== PRELOADER PART ENDS ======-->
+    <!--====== NAVBAR TWO PART START ======-->
+    <section class="navbar-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg">
+                                                <a class="navbar-brand top" href="/">
+                            VPN订阅                        </a>
+                                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTwo" aria-controls="navbarTwo" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
+                            <ul class="navbar-nav m-auto">
+                                                                <li class="nav-item"><a href="/">首页</a></li>
+                                                                <li class="nav-item"><a href="/free-nodes/">免费节点</a></li>
+                                                                <li class="nav-item"><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li class="nav-item"><a href="/news/">新闻资讯</a></li>
+                                                                <li class="nav-item"><a href="/client.htm">客户端</a></li>
+                                                            </ul>
+                        </div>
+
+                    </nav> <!-- navbar -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+    <!--====== NAVBAR TWO PART ENDS ======-->
+    <!--====== SLIDER PART START ======-->
+    <section id="home" class="slider_area">
+        <div id="carouselThree" class="carousel slide sub-page" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="slider-content">
+                                    <h1 class="title">java8中的Instant有关</h1>
+                                    <p class="text">
+                                        <a href="/">首页</a> / 
+                                        <a href="/news/">新闻资讯</a> / 
+                                        <span>正文</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div> <!-- row -->
+                    </div> <!-- container -->
+                    <div class="slider-image-box d-none d-lg-flex align-items-end">
+                        <div class="slider-image">
+                            <img src="/assets/website/img/clashnyanpasu/slider/1.png" alt="Hero">
+                        </div> <!-- slider-imgae -->
+                    </div> <!-- slider-imgae box -->
+                </div> <!-- carousel-item -->
+            </div>
+        </div>
+    </section>
+    <!--====== SLIDER PART ENDS ======-->
+    <!--====== ABOUT PART START ======-->
+    <section id=about class=about-area>
+        <div class=container>
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <h2><a id="Instant_0" rel="nofollow"></a>Instant</h2> <p>表示时间，可以精确到纳秒。<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221117/ce81ad853ab03dcff5836c0cd97f5f37.jpg" alt="java8中的Instant有关"><br /> 这里直接打印的时间可以看出来，应该是有时区的差距的，差不多是差了8个小时。<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221117/c342bbdca90c11341e987ea9a95b4f3a.jpg" alt="java8中的Instant有关"><br /> 在 Instant.now()的基础上加上8个小时，打印出来的时间戳就是一致的了。<br /> Instant.ofEpochSecond(ss); 根据给的秒数构建一个对象<br /> Instant.ofEpochSecond(milli); 根据给的毫秒构建一个对象。</p> <p>本来我想用 now.get(ChronoField.YEAR)获得年份的，但是报错了，后来看源码发现这个方法的参数如果是ChronoField的话就支持四个，<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221117/e6fc05b4059a00e53d0fe055f20fa8fc.jpg" alt="java8中的Instant有关"><br /> 想找到可以获取到年份的途径，但是都尝试失败了。</p> <p>now.toEpochMilli() 这个返回值就和 System.currentTimeMillis() 效果是一样的。但是now这个时候是不能加上时区的的<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221117/61c65ffa82f79117e80ea6a41ab794e0.jpg" alt="java8中的Instant有关"><br /> 这就是差别，明显是差了八个小时的。</p> <h2><a id="Duration_17" rel="nofollow"></a>Duration</h2> <p>可以用来表示一个间隔时间。<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221117/514adf20b20949ae0f64f9ba4e256bda.jpg" alt="java8中的Instant有关"><br /> 有挺多时间单位可以选择来给构建的。</p> <pre><code>        Instant now = Instant.now().plus(8,ChronoUnit.HOURS);         Duration d1 = Duration.ofHours(2);         Instant now2 = now.plus(d1);         System.out.println("now = "+now);         System.out.println("now2 = "+now2); //        now = 2021-11-09T22:50:03.606Z //        now2 = 2021-11-10T00:50:03.606Z         System.out.println("now is before now2 :"+now.isBefore(now2));         System.out.println("now2 is after now :"+now2.isAfter(now)); //        now is before now2 :true //        now2 is after now :true</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221117/a608f6e1ab0db07404f1057b80a56d7b.jpg" alt="java8中的Instant有关"><br /> 还可以在Duration的基础上再进行计算。</p> <h2><a id="Period_38" rel="nofollow"></a>Period</h2> <p>也是用来表示一段间隔时间的，但是我看的文章上说Period通常用来表示年月日，Duration通常用来表示秒 毫秒的。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221117/ee705a7586d858f81f97554b5e8ec73e.jpg" alt="java8中的Instant有关"></p> <p>我看静态的构建方法果然就是年月日的，并且这个对象也是可以用Instant对象直接运算的</p> <pre><code>        Instant now = Instant.now().plus(8,ChronoUnit.HOURS);         Period p1 = Period.ofDays(1);         System.out.println(now.plus(p1)); //        2021-11-10T22:56:42.776Z</code></pre> <p>和Duration的方法有些类似的。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-95626.htm">动物疫苗的概念和分类是什么 动物疫苗的概念和分类是什么意思</a></p>
+                                        <p>下一个：<a href="/news/article-96375.htm">Vue前端js循环遍历数组八种方法总结最新</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-71284.htm" title="品牌猫粮排行榜前十名（央视评测十大放心猫粮品牌）">品牌猫粮排行榜前十名（央视评测十大放心猫粮品牌）</a></li>
+                        <li class="py-2"><a href="/news/article-93358.htm" title="卖宠物粮食的公司叫什么名字呢 卖宠物粮食的公司叫什么名字呢好听">卖宠物粮食的公司叫什么名字呢 卖宠物粮食的公司叫什么名字呢好听</a></li>
+                        <li class="py-2"><a href="/news/article-76251.htm" title="长沙免费领养宠物的平台有哪些（长沙哪里可以免费领养宠物）">长沙免费领养宠物的平台有哪些（长沙哪里可以免费领养宠物）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-14-node-share-links.htm" title="VPN订阅 | 4月14日21.1M/S|免费SSR/Shadowrocket/V2ray/Clash订阅节点分享">VPN订阅 | 4月14日21.1M/S|免费SSR/Shadowrocket/V2ray/Clash订阅节点分享</a></li>
+                        <li class="py-2"><a href="/news/article-83148.htm" title="兽用疫苗经营需要什么资质（兽用疫苗经营需要什么资质证书）">兽用疫苗经营需要什么资质（兽用疫苗经营需要什么资质证书）</a></li>
+                        <li class="py-2"><a href="/news/article-78319.htm" title="狗粮加工配方表（狗粮加工厂视频）">狗粮加工配方表（狗粮加工厂视频）</a></li>
+                        <li class="py-2"><a href="/news/article-80345.htm" title="动物注射疫苗简报怎么写的（动物疫苗注射工作注意事项）">动物注射疫苗简报怎么写的（动物疫苗注射工作注意事项）</a></li>
+                        <li class="py-2"><a href="/news/article-91887.htm" title="动物打疫苗需要什么资质（动物打疫苗需要什么资质和证书）">动物打疫苗需要什么资质（动物打疫苗需要什么资质和证书）</a></li>
+                        <li class="py-2"><a href="/news/article-91886.htm" title="java利用RestTemplate 发送post请求">java利用RestTemplate 发送post请求</a></li>
+                        <li class="py-2"><a href="/news/article-96373.htm" title="java8中的Instant有关">java8中的Instant有关</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!--====== FOOTER PART START ======-->
+    <section class="footer-area footer-dark">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="copyright text-center mt-35">
+                                            <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p class="text">
+                            VPN订阅 推荐VPN免费节点订阅官网 版权所有 Powered by WordPress
+                        </p>
+                    </div> <!--  copyright -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+    <!--====== FOOTER PART ENDS ======-->
+    <!--====== BACK TOP TOP PART START ======-->
+    <a href="#" class="back-to-top"><i class="lni lni-chevron-up"></i></a>
+    <!--====== BACK TOP TOP PART ENDS ======-->
+    <!--====== Jquery js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/vendor/modernizr-3.7.1.min.js"></script>
+    <!--====== Bootstrap js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/ajax-contact.js"></script>
+    <!--====== Isotope js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/isotope.pkgd.min.js"></script>
+    <!--====== Scrolling Nav js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/scrolling-nav.js"></script>
+    <!--====== Main js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
