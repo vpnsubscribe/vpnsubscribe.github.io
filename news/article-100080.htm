@@ -1,0 +1,246 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://vpnsubscribe.github.io/news/article-100080.htm" />
+    <meta charset="utf-8">
+    <!--====== Title ======-->
+    <title>设计模式学习笔记命令模式及在Spring JdbcTemplate 中的实现</title>
+        <meta name="description" content="命令（Command）模式是指将请求封装成为一个对象，使发出请求和执行请求的责任分割开，方便将命令对象进行存储、传递、调用、增加与管理。 也就是将发送者、接收者和调用命令封装成独立的对象，来供客户端调" />
+        <link rel="icon" href="/assets/website/img/clashnyanpasu/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="VPN订阅 推荐VPN免费节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://vpnsubscribe.github.io/news/article-100080.htm" />
+    <meta property="og:site_name" content="VPN订阅 推荐VPN免费节点订阅官网" />
+    <meta property="og:title" content="设计模式学习笔记命令模式及在Spring JdbcTemplate 中的实现" />
+    <meta property="og:image" content="https://vpnsubscribe.github.io/uploads/20240623/dd928850dc6292d0072f467f6a2a45e8.webp" />
+        <meta property="og:release_date" content="2025-04-20T09:03:12" />
+    <meta property="og:updated_time" content="2025-04-20T09:03:12" />
+        <meta property="og:description" content="命令（Command）模式是指将请求封装成为一个对象，使发出请求和执行请求的责任分割开，方便将命令对象进行存储、传递、调用、增加与管理。 也就是将发送者、接收者和调用命令封装成独立的对象，来供客户端调" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--====== Magnific Popup CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/magnific-popup.css">
+    <!--====== Slick CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/slick.css">
+    <!--====== Line Icons CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/LineIcons.css">
+    <!--====== Bootstrap CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/bootstrap.min.css">
+    <!--====== Default CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/default.css">
+    <!--====== Style CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/style.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="设计模式学习笔记命令模式及在Spring JdbcTemplate 中的实现">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3W92VD25Q0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3W92VD25Q0');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--====== PRELOADER PART START ======-->
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--====== PRELOADER PART ENDS ======-->
+    <!--====== NAVBAR TWO PART START ======-->
+    <section class="navbar-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg">
+                                                <a class="navbar-brand top" href="/">
+                            VPN订阅                        </a>
+                                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTwo" aria-controls="navbarTwo" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
+                            <ul class="navbar-nav m-auto">
+                                                                <li class="nav-item"><a href="/">首页</a></li>
+                                                                <li class="nav-item"><a href="/free-nodes/">免费节点</a></li>
+                                                                <li class="nav-item"><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li class="nav-item"><a href="/news/">新闻资讯</a></li>
+                                                                <li class="nav-item"><a href="/client.htm">客户端</a></li>
+                                                            </ul>
+                        </div>
+
+                    </nav> <!-- navbar -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+    <!--====== NAVBAR TWO PART ENDS ======-->
+    <!--====== SLIDER PART START ======-->
+    <section id="home" class="slider_area">
+        <div id="carouselThree" class="carousel slide sub-page" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="slider-content">
+                                    <h1 class="title">设计模式学习笔记命令模式及在Spring JdbcTemplate 中的实现</h1>
+                                    <p class="text">
+                                        <a href="/">首页</a> / 
+                                        <a href="/news/">新闻资讯</a> / 
+                                        <span>正文</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div> <!-- row -->
+                    </div> <!-- container -->
+                    <div class="slider-image-box d-none d-lg-flex align-items-end">
+                        <div class="slider-image">
+                            <img src="/assets/website/img/clashnyanpasu/slider/1.png" alt="Hero">
+                        </div> <!-- slider-imgae -->
+                    </div> <!-- slider-imgae box -->
+                </div> <!-- carousel-item -->
+            </div>
+        </div>
+    </section>
+    <!--====== SLIDER PART ENDS ======-->
+    <!--====== ABOUT PART START ======-->
+    <section id=about class=about-area>
+        <div class=container>
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                <div class="xcblog-blog-detail">
+                      				  				  				<p>命令（Command）模式是指将请求封装成为一个对象，使发出请求和执行请求的责任分割开，方便将命令对象进行存储、传递、调用、增加与管理。</p> <p>也就是将发送者、接收者和调用命令封装成独立的对象，来供客户端调用。属于行为模式的一种。</p> <h2 id="一命令模式介绍">一、命令模式介绍</h2> <p>命令模式将发送者与接受者完全解耦，发送者与接收者之间没有直接的联系，发送者只需要如何发送请求，而不需要关心请求是如何完成的。下面就来看看命令模式的结构和实现：</p> <h3 id="11-命令模式的结构">1.1 命令模式的结构</h3> <p>将调用者和实现者进行分离，其结构如下所示：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/fb4ced5ac789568fa4980ecdbcad9e77.jpg" alt="设计模式学习笔记命令模式及在Spring JdbcTemplate 中的实现"></p> <ul> <li><code>Command</code>：抽象命令角色，声明执行命令的接口</li> <li><code>Command1、Command2</code>：具体命令角色，是抽象命令角色的具体实现类</li> <li><code>ReceiverA、ReceiverB</code>：具体实现，具体命令对象的真正实现者</li> <li><code>Invoker</code>：调用者，处理命令、实现命令的具体操作者，负责对外提供命令服务</li> <li><code>Client</code>：客户端</li> </ul> <h3 id="12-命令模式的实现">1.2 命令模式的实现</h3> <p>根据上面的结构图，可以实现如下代码：</p> <pre><code class="language-java">/**  * @description: 抽象命令类  * @author: wjw  * @date: 2022/4/5  */ public interface Command {      public abstract void execute(); } /**  * @description: 命令具体实现类1  * @author: wjw  * @date: 2022/4/5  */ public class Command1 implements Command{      private ReceiverA receiverA = new ReceiverA();      @Override     public void execute() {         receiverA.action();     } } /**  * @description: 命令具体实现类2  * @author: wjw  * @date: 2022/4/5  */ public class Command1 implements Command{      private ReceiverA receiverA = new ReceiverA();      @Override     public void execute() {         receiverA.action();     } } /**  * @description: 接收者类A  * @author: wjw  * @date: 2022/4/5  */ public class ReceiverA {      public void action() {         System.out.println("我是ReceiverA");     } } /**  * @description: 具体实现者  * @author: wjw  * @date: 2022/4/5  */ public class ReceiverB {      public void action() {         System.out.println("我是ReceiverB");     } } /**  * @description: 命令调用者  * @author: wjw  * @date: 2022/4/5  */ public class Invoker {      private Command command;      public Invoker(Command command) {         this.command = command;     }      public void setCommand(Command command) {         this.command = command;     }      public void call() {         System.out.println("调用者执行命令command");         command.execute();     } } /**  * @description: 客户端  * @author: wjw  * @date: 2022/4/5  */ public class Client {      public static void main(String[] args) {         Command command1 = new Command1();         Invoker invoker1 = new Invoker(command1);         invoker1.call();     } }</code></pre> <p>最后的客户端运行结果为：</p> <pre><code>调用者执行命令command 我是ReceiverA</code></pre> <p>下面来看看命令模式的应用场景</p> <h2 id="二命令模式的应用场景">二、命令模式的应用场景</h2> <h3 id="21-spring-框架中的-jdbctemplate">2.1 Spring 框架中的 JdbcTemplate</h3> <p>本文选取的Spring版本是5.3.1，来看看<code>JdbcTemplate</code>类中的<code>query()</code>方法：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/aef68fa7be9a9128e74db2faaf25ae1b.jpg" alt="设计模式学习笔记命令模式及在Spring JdbcTemplate 中的实现"></p> <p>我们看到，上面的<code>query()</code>方法中定义了一个内部类<code>QueryStatementCallback</code>，并实现了<code>StatementCallback</code>接口，点开查看详细内容：</p> <pre><code class="language-java">@FunctionalInterface public interface StatementCallback&lt;T&gt; {     //唯一的抽象方法     @Nullable     T doInStatement(Statement var1) throws SQLException, DataAccessException; }</code></pre> <p>回到<code>query()</code>方法中，我们发现最后返回的<code>execute(new QueryStatementCallback())</code>中是将内部类<code>QueryStatementCallback</code>当做参数进行返回。这里<code>QueryStatementCallback</code>就相当于命令模式中的具体命令对象，而<code>StatementCallback</code>则是抽象命令对象。比如还有其他具体命令实现类，比如<code>BatchUpdateStatementCallback</code>、<code>ExecuteStatementCallback</code>等等：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/6b27715dc5c407705e7ae5f65f24e2ff.jpg" alt="设计模式学习笔记命令模式及在Spring JdbcTemplate 中的实现"></p> <p>看看<code>execute()</code>方法，为了方便理解，代码做了精简：</p> <pre><code class="language-java">@Nullable private &lt;T&gt; T execute(StatementCallback&lt;T&gt; action, boolean closeResources) throws DataAccessException {     Assert.notNull(action, "Callback object must not be null");     Connection con = DataSourceUtils.getConnection(this.obtainDataSource());     Statement stmt = null;      Object var12;     try {         stmt = con.createStatement();         this.applyStatementSettings(stmt);         //执行doInStatement方法         T result = action.doInStatement(stmt);         this.handleWarnings(stmt);         //赋值为var12         var12 = result;     } catch (SQLException var10) {        //...     } finally {       //...     } 	//最后返回statementCallback对象     return var12; }</code></pre> <p>根据上面的代码，可以梳理整个执行流程：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/7920050850c7926d1adb034afaac34ad.jpg" alt="设计模式学习笔记命令模式及在Spring JdbcTemplate 中的实现"></p> <p>实际上<code>JdbcTemplate</code>这个类是调用者（Invoker）、实现者（Receiver）和具体命令实现（Concrete Command）的集合，<code>statementCallback</code>则是命令的抽象接口。</p> <h2 id="三命令模式实战">三、命令模式实战</h2> <p>模拟在餐厅中点餐交给初始烹饪的场景，在该场景中点餐人员只需要把需要点的各种菜系交给服务员，服务员再把各项菜品交给厨师进行烹饪。如下图所示：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/1aed6254f7ee8d06b4172b66d1c2f9db.jpg" alt="设计模式学习笔记命令模式及在Spring JdbcTemplate 中的实现"></p> <p>我们先分析一下，命令是菜品具体实现是菜系，命令实现是厨师，调用者是服务员。所以该场景下的命令模式结构应该为：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/f32c399247fd5a35f42fded19329113e.jpg" alt="设计模式学习笔记命令模式及在Spring JdbcTemplate 中的实现"></p> <p>代码目录结构为：</p> <pre><code>├─src │  ├─main │  │  ├─java │  │  │  └─cn │  │  │      └─ethan │  │  │          └─design │  │  │              └─command │  │  │                  │  Waiter.java │  │  │                  │ │  │  │                  ├─cook │  │  │                  │  │  ICook.java │  │  │                  │  │ │  │  │                  │  └─impl │  │  │                  │          GuangDongCook.java │  │  │                  │          JiangSuCook.java │  │  │                  │          ShanDongCook.java │  │  │                  │          SiChuangCook.java │  │  │                  │ │  │  │                  └─cuisine │  │  │                      │  ICuisine.java │  │  │                      │ │  │  │                      └─impl │  │  │                              GuangDongCuisine.java │  │  │                              JiangSuCuisine.java │  │  │                              ShanDongCuisine.java │  │  │                              SiChuangCuisine.java │  │  │ │  │  └─resources │  └─test │      └─java │          └─cn │              └─ethan │                  └─disign │                          ApiTest.java</code></pre> <p>具体代码如下：</p> <ol> <li><strong>抽象命令者及其具体实现</strong></li> </ol> <pre><code class="language-java">/**  * @description: 抽象命令接口（八大菜系）  * @author: wjw  * @date: 2022/4/5  */ public interface ICuisine {      /**烹调公共接口*/     void cook(); } /**  * @description: 具体命令实现（广东菜）  * @author: wjw  * @date: 2022/4/5  */ public class GuangDongCuisine implements ICuisine {      private ICook cook;      public GuangDongCuisine(ICook cook) {         this.cook = cook;     }      @Override     public void cook() {         cook.doCooking();     } } /**  * @description: 命令具体实现（江苏菜）  * @author: wjw  * @date: 2022/4/5  */ public class JiangSuCuisine implements ICuisine {      private ICook cook;      public JiangSuCuisine(ICook cook) {         this.cook = cook;     }      @Override     public void cook() {         cook.doCooking();     } } /**  * @description: 具体命令实现（山东菜）  * @author: wjw  * @date: 2022/4/5  */ public class ShanDongCuisine implements ICuisine {      private ICook cook;      public ShanDongCuisine(ICook cook) {         this.cook = cook;     }      @Override     public void cook() {         cook.doCooking();     } } /**  * @description: 具体命令实现（四川菜）  * @author: wjw  * @date: 2022/4/5  */ public class SiChuangCuisine implements ICuisine {      private ICook cook;      public SiChuangCuisine(ICook cook) {         this.cook = cook;     }      @Override     public void cook() {         cook.doCooking();     } }</code></pre> <ol start="2"> <li><strong>抽象实现者及其具体实现</strong></li> </ol> <pre><code class="language-java">/**  * @description: 抽象实现者接口  * @author: wjw  * @date: 2022/4/5  */ public interface ICook {      /**厨师烹调*/     void doCooking(); } /**  * @description: 具体实现者（广东厨师）  * @author: wjw  * @date: 2022/4/5  */ public class GuangDongCook implements ICook {      private Logger logger = LoggerFactory.getLogger(GuangDongCook.class);      @Override     public void doCooking() {         logger.info("广东厨师，会做广东菜");     } } /**  * @description: 具体实现类（江苏厨师）  * @author: wjw  * @date: 2022/4/5  */ public class JiangSuCook implements ICook {      private Logger logger = LoggerFactory.getLogger(JiangSuCook.class);      @Override     public void doCooking() {         logger.info("江苏厨师，会烧江苏菜");     } } /**  * @description: 具体实现类（山东厨师）  * @author: wjw  * @date: 2022/4/5  */ public class ShanDongCook implements ICook {      private Logger logger = LoggerFactory.getLogger(ShanDongCook.class);      @Override     public void doCooking() {         logger.info("山东厨师会烧山东菜");     } } /**  * @description: 具体实现类（四川厨师）  * @author: wjw  * @date: 2022/4/5  */ public class SiChuangCook implements ICook {      private Logger logger = LoggerFactory.getLogger(SiChuangCook.class);      @Override     public void doCooking() {         logger.info("四川厨师会烧四川菜");     } }</code></pre> <ol start="3"> <li><strong>调用者及客户端</strong></li> </ol> <pre><code class="language-java">/**  * @description: 调用者(服务员)  * @author: wjw  * @date: 2022/4/5  */ public class Waiter {      private Logger logger = LoggerFactory.getLogger(Waiter.class);      private List&lt;ICuisine&gt; cuisineList = new ArrayList&lt;&gt;();      public void order(ICuisine cuisine) {         cuisineList.add(cuisine);     }      public synchronized void placeOrder() {         for (ICuisine cuisine : cuisineList) {             cuisine.cook();         }         cuisineList.clear();     } } /**  * @description: 客户端  * @author: wjw  * @date: 2022/4/5  */ public class ApiTest {      @Test     public void test_command() {         //菜和厨师命令实现         ICuisine guangDongCuisine = new GuangDongCuisine(new GuangDongCook());         ICuisine shanDongCuisine = new ShanDongCuisine(new ShanDongCook());         ICuisine siChuangCuisine = new SiChuangCuisine(new SiChuangCook());         ICuisine jiangSuCuisine = new JiangSuCuisine(new JiangSuCook());          //调用者进行点单         Waiter waiter = new Waiter();         waiter.order(guangDongCuisine);         waiter.order(shanDongCuisine);         waiter.order(siChuangCuisine);         waiter.order(jiangSuCuisine);          //下单操作         waiter.placeOrder();      } }</code></pre> <p>最终测试结果如下：</p> <pre><code>23:16:40.512 [main] INFO  c.e.d.c.cook.impl.GuangDongCook - 广东厨师，会做广东菜 23:16:40.518 [main] INFO  c.e.d.command.cook.impl.ShanDongCook - 山东厨师会烧山东菜 23:16:40.518 [main] INFO  c.e.d.command.cook.impl.SiChuangCook - 四川厨师会烧四川菜 23:16:40.518 [main] INFO  c.e.d.command.cook.impl.JiangSuCook - 江苏厨师，会烧江苏菜</code></pre> <h2 id="参考资料">参考资料</h2> <p>《重学Java设计模式》</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://c.biancheng.net/view/1380.html"  target="_blank" rel="nofollow">http://c.biancheng.net/view/1380.html</a></p> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-99301.htm">宠物粮食专卖店电话号码 宠物粮食专卖店电话号码多少</a></p>
+                                        <p>下一个：<a href="/news/article-100081.htm">宠物食品店名字（宠物零食店名）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-102240.htm" title="给动物打疫苗多少钱（给动物打疫苗多少钱一针?）">给动物打疫苗多少钱（给动物打疫苗多少钱一针?）</a></li>
+                        <li class="py-2"><a href="/news/article-86018.htm" title="FreeRTOS实时操作系统之可视化追踪调试_操作系统">FreeRTOS实时操作系统之可视化追踪调试_操作系统</a></li>
+                        <li class="py-2"><a href="/news/article-88896.htm" title="给猫咪驱虫多少钱一次合适（给猫驱虫一般多少钱）">给猫咪驱虫多少钱一次合适（给猫驱虫一般多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-71589.htm" title="mysql中的date、datetime、timestamp你还不知道怎么使用吗_在线工具">mysql中的date、datetime、timestamp你还不知道怎么使用吗_在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-76930.htm" title="SSL及GMVPN握手协议详解">SSL及GMVPN握手协议详解</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-15-clash-v2ray-ss-ssr.htm" title="VPN订阅 | 3月15日22.1M/S|免费V2ray/SSR/Clash/Shadowrocket订阅节点分享">VPN订阅 | 3月15日22.1M/S|免费V2ray/SSR/Clash/Shadowrocket订阅节点分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-23-free-node-subscribe-links.htm" title="VPN订阅 | 4月23日18.4M/S|免费Clash/Shadowrocket/SSR/V2ray订阅节点分享">VPN订阅 | 4月23日18.4M/S|免费Clash/Shadowrocket/SSR/V2ray订阅节点分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-6-free-v2ray-subscribe.htm" title="VPN订阅 | 4月6日22.1M/S|免费V2ray/SSR/Clash/Shadowrocket订阅节点分享">VPN订阅 | 4月6日22.1M/S|免费V2ray/SSR/Clash/Shadowrocket订阅节点分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-14-node-share-links.htm" title="VPN订阅 | 4月14日21.1M/S|免费SSR/Shadowrocket/V2ray/Clash订阅节点分享">VPN订阅 | 4月14日21.1M/S|免费SSR/Shadowrocket/V2ray/Clash订阅节点分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-17-free-v2ray-subscribe.htm" title="VPN订阅 | 3月17日18.4M/S|免费V2ray/Clash/Shadowrocket/SSR订阅节点分享">VPN订阅 | 3月17日18.4M/S|免费V2ray/Clash/Shadowrocket/SSR订阅节点分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">67</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!--====== FOOTER PART START ======-->
+    <section class="footer-area footer-dark">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="copyright text-center mt-35">
+                                            <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p class="text">
+                            VPN订阅 推荐VPN免费节点订阅官网 版权所有 Powered by WordPress
+                        </p>
+                    </div> <!--  copyright -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+    <!--====== FOOTER PART ENDS ======-->
+    <!--====== BACK TOP TOP PART START ======-->
+    <a href="#" class="back-to-top"><i class="lni lni-chevron-up"></i></a>
+    <!--====== BACK TOP TOP PART ENDS ======-->
+    <!--====== Jquery js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/vendor/modernizr-3.7.1.min.js"></script>
+    <!--====== Bootstrap js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/ajax-contact.js"></script>
+    <!--====== Isotope js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/isotope.pkgd.min.js"></script>
+    <!--====== Scrolling Nav js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/scrolling-nav.js"></script>
+    <!--====== Main js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
