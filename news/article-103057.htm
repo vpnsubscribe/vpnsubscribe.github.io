@@ -1,0 +1,246 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://vpnsubscribe.github.io/news/article-103057.htm" />
+    <meta charset="utf-8">
+    <!--====== Title ======-->
+    <title>feign client三个客户端的自动装配</title>
+        <meta name="description" content="feign client客户端的自动装配 我们在之前的文章中说了Feign的客户端有httpclient，OkHttpClient，Client.Default，下面就这三个客户端的自动装配进行分析一" />
+        <link rel="icon" href="/assets/website/img/clashnyanpasu/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="VPN订阅 推荐VPN免费节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://vpnsubscribe.github.io/news/article-103057.htm" />
+    <meta property="og:site_name" content="VPN订阅 推荐VPN免费节点订阅官网" />
+    <meta property="og:title" content="feign client三个客户端的自动装配" />
+    <meta property="og:image" content="https://vpnsubscribe.github.io/uploads/20240623/70a6029b4b18b501f935493b3e7dc213.webp" />
+        <meta property="og:release_date" content="2025-04-24T09:17:01" />
+    <meta property="og:updated_time" content="2025-04-24T09:17:01" />
+        <meta property="og:description" content="feign client客户端的自动装配 我们在之前的文章中说了Feign的客户端有httpclient，OkHttpClient，Client.Default，下面就这三个客户端的自动装配进行分析一" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--====== Magnific Popup CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/magnific-popup.css">
+    <!--====== Slick CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/slick.css">
+    <!--====== Line Icons CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/LineIcons.css">
+    <!--====== Bootstrap CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/bootstrap.min.css">
+    <!--====== Default CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/default.css">
+    <!--====== Style CSS ======-->
+    <link rel="stylesheet" href="/assets/website/css/clashnyanpasu/style.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="feign client三个客户端的自动装配">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3W92VD25Q0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3W92VD25Q0');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--====== PRELOADER PART START ======-->
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--====== PRELOADER PART ENDS ======-->
+    <!--====== NAVBAR TWO PART START ======-->
+    <section class="navbar-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg">
+                                                <a class="navbar-brand top" href="/">
+                            VPN订阅                        </a>
+                                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTwo" aria-controls="navbarTwo" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
+                            <ul class="navbar-nav m-auto">
+                                                                <li class="nav-item"><a href="/">首页</a></li>
+                                                                <li class="nav-item"><a href="/free-nodes/">免费节点</a></li>
+                                                                <li class="nav-item"><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li class="nav-item"><a href="/news/">新闻资讯</a></li>
+                                                                <li class="nav-item"><a href="/client.htm">客户端</a></li>
+                                                            </ul>
+                        </div>
+
+                    </nav> <!-- navbar -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+    <!--====== NAVBAR TWO PART ENDS ======-->
+    <!--====== SLIDER PART START ======-->
+    <section id="home" class="slider_area">
+        <div id="carouselThree" class="carousel slide sub-page" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="slider-content">
+                                    <h1 class="title">feign client三个客户端的自动装配</h1>
+                                    <p class="text">
+                                        <a href="/">首页</a> / 
+                                        <a href="/news/">新闻资讯</a> / 
+                                        <span>正文</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div> <!-- row -->
+                    </div> <!-- container -->
+                    <div class="slider-image-box d-none d-lg-flex align-items-end">
+                        <div class="slider-image">
+                            <img src="/assets/website/img/clashnyanpasu/slider/1.png" alt="Hero">
+                        </div> <!-- slider-imgae -->
+                    </div> <!-- slider-imgae box -->
+                </div> <!-- carousel-item -->
+            </div>
+        </div>
+    </section>
+    <!--====== SLIDER PART ENDS ======-->
+    <!--====== ABOUT PART START ======-->
+    <section id=about class=about-area>
+        <div class=container>
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="htmledit_views"> <h2>feign client客户端的自动装配</h2> <p>我们在之前的文章中说了Feign的客户端有httpclient，OkHttpClient，Client.Default，下面就这三个客户端的自动装配进行分析一下。</p> <h3>FeignRibbonClientAutoConfiguration</h3> <p>FeignRibbonClientAutoConfiguration这个类配置FeignClient，它具有负载均衡能力</p> <pre>@ConditionalOnClass({ ILoadBalancer.class, Feign.class }) @Configuration @AutoConfigureBefore(FeignAutoConfiguration.class) @EnableConfigurationProperties({ FeignHttpClientProperties.class }) //Order is important here, last should be the default, first should be optional // see https://github.com/spring-cloud/spring-cloud-netflix/issues/2086#issuecomment-316281653 @Import({ HttpClientFeignLoadBalancedConfiguration.class,     OkHttpFeignLoadBalancedConfiguration.class,     DefaultFeignLoadBalancedConfiguration.class }) public class FeignRibbonClientAutoConfiguration {    @Bean   @Primary   @ConditionalOnMissingBean   @ConditionalOnMissingClass("org.springframework.retry.support.RetryTemplate")   public CachingSpringLoadBalancerFactory cachingLBClientFactory(       SpringClientFactory factory) {     return new CachingSpringLoadBalancerFactory(factory);   }    @Bean   @Primary   @ConditionalOnMissingBean   @ConditionalOnClass(name = "org.springframework.retry.support.RetryTemplate")   public CachingSpringLoadBalancerFactory retryabeCachingLBClientFactory(     SpringClientFactory factory,     LoadBalancedRetryFactory retryFactory) {     return new CachingSpringLoadBalancerFactory(factory, retryFactory);   }    @Bean   @ConditionalOnMissingBean   public Request.Options feignRequestOptions() {     return LoadBalancerFeignClient.DEFAULT_OPTIONS;   } }</pre> <p>当ILoadBalancer类和Feign类存在的时候，FeignRibbonClientAutoConfiguration可以自动配置，同时导入HttpClientFeignLoadBalancedConfiguration、OkHttpFeignLoadBalancedConfiguration、DefaultFeignLoadBalancedConfiguration三个客户端的负载均衡配置类</p> <h3>HttpClientFeignLoadBalancedConfiguration</h3> <p>从HttpClientFeignLoadBalancedConfiguration的类上的注解我们可以看到</p> <pre>@Configuration @ConditionalOnClass(ApacheHttpClient.class) @ConditionalOnProperty(value = "feign.httpclient.enabled", matchIfMissing = true) class HttpClientFeignLoadBalancedConfiguration { }</pre> <p>存在ApacheHttpClient类和feign.httpclient.enabled=true可以实现httpclient的自动装配</p> <h3>DefaultFeignLoadBalancedConfiguration</h3> <pre>@Configuration class DefaultFeignLoadBalancedConfiguration {   @Bean   @ConditionalOnMissingBean   public Client feignClient(CachingSpringLoadBalancerFactory cachingFactory,                 SpringClientFactory clientFactory) {     return new LoadBalancerFeignClient(new Client.Default(null, null),         cachingFactory, clientFactory);   } }</pre> <p>从源码中我们可以看到默认自动装配是这个，从Client.Default看出实例使用HttpURLConnection来发起远程调用请求。</p> <h3>OkHttpFeignLoadBalancedConfiguration</h3> <pre>@Configuration @ConditionalOnClass(OkHttpClient.class) @ConditionalOnProperty(value = "feign.okhttp.enabled") class OkHttpFeignLoadBalancedConfiguration { }</pre> <p>通过OkHttpFeignLoadBalancedConfiguration类上的注解，可以看到需要满足的条件的是存在OkHttpClient类，并且feign.okhttp.enabled=true，这样自动装配才会生效，实例内部通过OKHttp3完成http请求。</p> <h3>总结</h3> <p>本篇文章主要对Feign的三个客户端的自动配置类进行了源码层面的分析，对应的类的自动装配类分别是OkHttpFeignLoadBalancedConfiguration、DefaultFeignLoadBalancedConfiguration、HttpClientFeignLoadBalancedConfiguration，根据自动装配类的类上的注解，我们可以看出要想让哪个自动装配类生效，需要我们配置的条件是什么，以及需要引入的包有哪些，除了这个三个客户端外还有一个客户端是LoadBalancerFeignClient，它的内部是通过ribbon的负载均衡调度各个客户端完成Http请求的发送，而不是真正的客户端类。</p> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-102242.htm">动物疫苗注射注意事项及禁忌有哪些（动物疫苗的正确使用方法）</a></p>
+                                        <p>下一个：<a href="/news/article-103058.htm">幼猫睡觉要人陪（小猫睡觉要人陪吗）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-4-19-clash-v2ray-ss-ssr.htm" title="VPN订阅 | 4月19日22.7M/S|免费V2ray/Clash/SSR/Shadowrocket订阅节点分享">VPN订阅 | 4月19日22.7M/S|免费V2ray/Clash/SSR/Shadowrocket订阅节点分享</a></li>
+                        <li class="py-2"><a href="/news/article-92603.htm" title="动物医院的拼音怎么写 动物医院的拼音怎么写啊">动物医院的拼音怎么写 动物医院的拼音怎么写啊</a></li>
+                        <li class="py-2"><a href="/news/article-83148.htm" title="兽用疫苗经营需要什么资质（兽用疫苗经营需要什么资质证书）">兽用疫苗经营需要什么资质（兽用疫苗经营需要什么资质证书）</a></li>
+                        <li class="py-2"><a href="/news/article-97837.htm" title="win11系统怎么添加XPS查看器">win11系统怎么添加XPS查看器</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-11-clash-v2ray-ss-ssr.htm" title="VPN订阅 | 3月11日21.9M/S|免费SSR/Shadowrocket/V2ray/Clash订阅节点分享">VPN订阅 | 3月11日21.9M/S|免费SSR/Shadowrocket/V2ray/Clash订阅节点分享</a></li>
+                        <li class="py-2"><a href="/news/article-89624.htm" title="PHP命名空间概述">PHP命名空间概述</a></li>
+                        <li class="py-2"><a href="/news/article-85300.htm" title="哪里能买到便宜的花（哪里能买到便宜的鲜花）">哪里能买到便宜的花（哪里能买到便宜的鲜花）</a></li>
+                        <li class="py-2"><a href="/news/article-81077.htm" title="动物医院评价怎么写 动物医院评价怎么写范文">动物医院评价怎么写 动物医院评价怎么写范文</a></li>
+                        <li class="py-2"><a href="/news/article-80345.htm" title="动物注射疫苗简报怎么写的（动物疫苗注射工作注意事项）">动物注射疫苗简报怎么写的（动物疫苗注射工作注意事项）</a></li>
+                        <li class="py-2"><a href="/news/article-94294.htm" title="约翰医生的动物医院故事 约翰医生的动物医院故事讲述的秘密是什么">约翰医生的动物医院故事 约翰医生的动物医院故事讲述的秘密是什么</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">78</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!--====== FOOTER PART START ======-->
+    <section class="footer-area footer-dark">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="copyright text-center mt-35">
+                                            <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p class="text">
+                            VPN订阅 推荐VPN免费节点订阅官网 版权所有 Powered by WordPress
+                        </p>
+                    </div> <!--  copyright -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+    <!--====== FOOTER PART ENDS ======-->
+    <!--====== BACK TOP TOP PART START ======-->
+    <a href="#" class="back-to-top"><i class="lni lni-chevron-up"></i></a>
+    <!--====== BACK TOP TOP PART ENDS ======-->
+    <!--====== Jquery js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/vendor/modernizr-3.7.1.min.js"></script>
+    <!--====== Bootstrap js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/ajax-contact.js"></script>
+    <!--====== Isotope js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/isotope.pkgd.min.js"></script>
+    <!--====== Scrolling Nav js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnyanpasu/scrolling-nav.js"></script>
+    <!--====== Main js ======-->
+    <script src="/assets/website/js/frontend/clashnyanpasu/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
