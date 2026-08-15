@@ -1,4 +1,4 @@
-# VPN订阅 | 8月8日20.9M/S|免费V2ray节点/SSR节点/Shadowrocket节点/Clash节点/Singbox节点订阅节点分享  更新时间 2026-08-08 07:56:40
+# VPN订阅 | 8月15日19.3M/S|免费V2ray节点/Singbox节点/Clash节点/SSR节点/Shadowrocket节点订阅节点分享  更新时间 2026-08-15 08:53:04
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://vpnsubscribe.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### 免费Clash节点订阅链接
 
-- https://vpnsubscribe.github.io/uploads/2026/08/0-20260808.yaml
-- https://vpnsubscribe.github.io/uploads/2026/08/1-20260808.yaml
-- https://vpnsubscribe.github.io/uploads/2026/08/2-20260808.yaml
-- https://vpnsubscribe.github.io/uploads/2026/08/3-20260808.yaml
-- https://vpnsubscribe.github.io/uploads/2026/08/4-20260808.yaml
+- https://vpnsubscribe.github.io/uploads/2026/08/0-20260815.yaml
+- https://vpnsubscribe.github.io/uploads/2026/08/1-20260815.yaml
+- https://vpnsubscribe.github.io/uploads/2026/08/2-20260815.yaml
+- https://vpnsubscribe.github.io/uploads/2026/08/3-20260815.yaml
+- https://vpnsubscribe.github.io/uploads/2026/08/4-20260815.yaml
 
 ### 免费V2ray节点订阅链接
 
-- https://vpnsubscribe.github.io/uploads/2026/08/0-20260808.txt
-- https://vpnsubscribe.github.io/uploads/2026/08/1-20260808.txt
-- https://vpnsubscribe.github.io/uploads/2026/08/2-20260808.txt
-- https://vpnsubscribe.github.io/uploads/2026/08/3-20260808.txt
-- https://vpnsubscribe.github.io/uploads/2026/08/4-20260808.txt
+- https://vpnsubscribe.github.io/uploads/2026/08/0-20260815.txt
+- https://vpnsubscribe.github.io/uploads/2026/08/1-20260815.txt
+- https://vpnsubscribe.github.io/uploads/2026/08/2-20260815.txt
+- https://vpnsubscribe.github.io/uploads/2026/08/3-20260815.txt
+- https://vpnsubscribe.github.io/uploads/2026/08/4-20260815.txt
 
 ### 免费Sing-box节点订阅链接
 
-- https://vpnsubscribe.github.io/uploads/2026/08/20260808.json
+- https://vpnsubscribe.github.io/uploads/2026/08/20260815.json
 
 ## 更多Clash节点订阅 ：
 
